@@ -83,12 +83,15 @@
   margin-bottom: 20px;
 }
 
-@media(max-width:800px){
+@media(max-width:950px){
   .skill{
     grid-template-columns: repeat(2,1fr);
   }
   .thanks-message{
     font-size: 30px;
+  }
+  .identity-section{
+    height: auto;
   }
 }
 @media(max-width:500px){

@@ -1,3 +1,4 @@
+
 // Toggle the mobile navigation menu
 const toggleBtn = document.querySelector('.toggle-btn');
 const navLinks = document.querySelector('.nav-links');
@@ -9,29 +10,27 @@ toggleBtn.addEventListener('click', () => {
 
 // project page showProject part
 
-let crossBtn=document.querySelectorAll('.i1')
-let projectContainer=document.querySelectorAll('.show-project')
-crossBtn[0].addEventListener('click',() => {
-  projectContainer[0].style.display="none"
-})
-crossBtn[1].addEventListener('click',() => {
-  projectContainer[1].style.display="none"
-})
-crossBtn[2].addEventListener('click',() => {
-  projectContainer[2].style.display="none"
-})
+let crossBtn = document.querySelectorAll('.i1');
+let projectContainer = document.querySelectorAll('.show-project');
+let showButton = document.querySelectorAll('.showcasing');
 
-let showButton=document.querySelectorAll('.showcasing')
-showButton[0].addEventListener('click',() => {
-  projectContainer[0].style.display='block'
-})
-showButton[1].addEventListener('click',() => {
-  projectContainer[1].style.display='block'
-})
-showButton[2].addEventListener('click',() => {
-  projectContainer[2].style.display='block'
-})
+// Hiding projects when clicking the cross buttons
+crossBtn.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+        if (projectContainer[index]) {
+            projectContainer[index].style.display = "none";
+        }
+    });
+});
 
+// Showing projects when clicking the show buttons
+showButton.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+        if (projectContainer[index]) {
+            projectContainer[index].style.display = "block";
+        }
+    });
+});
 //animating cursor part
 const trailCount = 7; // Number of trails
         const trails = [];
@@ -68,27 +67,6 @@ const trailCount = 7; // Number of trails
             current = (current + 1) % trailCount;
         });
 
-
-//contact form
- document.getElementById("contactForm").addEventListener("submit", function(event) {
-          event.preventDefault(); // Prevent form from redirecting
-        
-          const formData = new FormData(this); // Get form data
-        
-          fetch("https://formspree.io/f/xjkybppq", {
-              method: "POST",
-              body: formData,
-              headers: { "Accept": "application/json" }
-          })
-          .then(response => response.json())
-          .then(data => {
-              document.getElementById("responseMessage").innerText = "Thank you! Your message has been sent.";
-              document.getElementById("contactForm").reset(); // Clear form fields
-          })
-          .catch(error => {
-              document.getElementById("responseMessage").innerText = "Something went wrong. Try again.";
-          });
-        });
 
 
   //Scroll reveal part      
@@ -167,3 +145,25 @@ const trailCount = 7; // Number of trails
       reset: true
     });
   
+
+    //contact form
+ document.getElementById("contactForm").addEventListener("submit", function(event) {
+  event.preventDefault(); // Prevent form from redirecting
+
+  const formData = new FormData(this); // Get form data
+
+  fetch("https://formspree.io/f/xjkybppq", {
+      method: "POST",
+      body: formData,
+      headers: { "Accept": "application/json" }
+  })
+  .then(response => response.json())
+  .then(data => {
+      document.getElementById("responseMessage").innerText = "Thank you! Your message has been sent.";
+      document.getElementById("contactForm").reset(); // Clear form fields
+  })
+  .catch(error => {
+      document.getElementById("responseMessage").innerText = "Something went wrong. Try again.";
+  });
+});
+

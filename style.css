@@ -411,4 +411,7 @@ input::placeholder{
   h1{
     font-size: 28px;
   }
+  .card{
+    width: 100%;
+  }
 }
